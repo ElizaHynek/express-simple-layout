@@ -1,4 +1,15 @@
+.dark {
+  background: #09255c;
+  color: #ecdbfc;
+  text-align: center;
+}
+
+.main {
+  background: #cacaca;
+  color: #444444;
+  text-align: center;
+}
+
 h1 {
-    font-weight: lighter;
-    font-style: italic;
-  }
+  font-weight: lighter;
+}
