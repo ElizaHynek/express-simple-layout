@@ -18,4 +18,14 @@
 			</label>
 			<button type="submit">Send message</button>
 		</form>
+		<div class="isSent">
+			{{#if isSent}}
+			The message has been sent!
+			{{/if}}
+		</div>
+		<div class="isError">
+			{{#if isError}}
+			You can't leave fields empty!
+			{{/if}}
+		</div>
 </html>
