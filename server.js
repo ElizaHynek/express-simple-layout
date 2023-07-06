@@ -11,18 +11,29 @@ app.set('view engine', '.hbs');
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.urlencoded({ extended: false }));
 
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/my-uploads');
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  },
+});
+const upload = multer({ storage: storage }); 
 
-app.post('/contact/send-message', (req, res) => {
+//const storage = multer.memoryStorage()
+//const upload = multer({ storage: storage })
+
+app.post('/contact/send-message', upload.single('image'), (req, res) => {
 
   const { author, sender, title, message } = req.body;
 
-  if(author && sender && title && message ) {
-    res.render('contact', { isSent: true });
+  if(author && sender && title && message && req.file) {
+    res.render('contact', { isSent: true, fileName: req.file.originalname });
   }
   else {
     res.render('contact', { isError: true });
   }
-
 });
 
 app.get('/', (req, res) => {
