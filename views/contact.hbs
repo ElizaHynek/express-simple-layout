@@ -14,18 +14,22 @@
 				Title: <input type="text" name="title">
 			</label>
 			<label>
+				Project design: <input type="file" name="image" accept="image/png, image/jpg, image/jpeg, image/gif">
+			</label>
+			<div class="isSent">
+				{{#if isSent}}
+				The message has been sent!
+				File {{fileName}} has been saved!
+				{{/if}}
+			</div>
+			<div class="isError">
+				{{#if isError}}
+				You can't leave fields empty!
+				{{/if}}
+			</div>
+			<label>
 				Message: <textarea name="message"></textarea>
 			</label>
 			<button type="submit">Send message</button>
 		</form>
-		<div class="isSent">
-			{{#if isSent}}
-			The message has been sent!
-			{{/if}}
-		</div>
-		<div class="isError">
-			{{#if isError}}
-			You can't leave fields empty!
-			{{/if}}
-		</div>
 </html>
